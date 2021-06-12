@@ -49,12 +49,15 @@ public class ChoicePath : MonoBehaviour
 
     public Text DialogBox;          //Box
     public int TxtLine;             //Line of Dialog - using a text file
+
     public int ChrIndex = 0;        //Percentage covererd
+
     public string ToWrite;
     public float WriteSpeed;
 
     void DialogUpdater()//string Dialog, int TxtLine)
     {
+
         if (Input.anyKeyDown)
         {
 
@@ -68,6 +71,15 @@ public class ChoicePath : MonoBehaviour
             DialogBox.text = ToWrite.Substring(0, ChrIndex);
         }
 
+        foreach (char letter in ToWrite)
+        {
+
+
+
+
+        }
+
+
     }
 
     void Section1()
@@ -79,54 +91,4 @@ public class ChoicePath : MonoBehaviour
 
 
     }
-
-
-
-
-
-    /*
-    public class Section1 : ChoicePath
-    {
-        void Start(ref Scen)
-        {
-            if (currSCN)
-            {
-
-
-            }
-        }
-    }
-    public class Section2 : ChoicePath
-    {
-
-
-
-
-
-    }
-    public class Section3 : ChoicePath
-    {
-
-
-
-
-
-    }
-    public class Section4 : ChoicePath
-    {
-
-
-
-
-
-    }
-    public class Section5 : ChoicePath
-    {
-
-
-
-
-
-    }
-    */
 }
