@@ -22,16 +22,25 @@ public class Buttons : MonoBehaviour
     void InitialiseButtons()
     {
         Button YesButton = Yes.GetComponent<Button>();
-        YesButton.onClick.AddListener(TriggeredButton);
-        
+        YesButton.onClick.AddListener(TriggeredYesButton);
+
+        Button NoButton = No.GetComponent<Button>();
+        NoButton.onClick.AddListener(TriggeredNoButton);
 
 
 
 
     }
-    void TriggeredButton()
+    void TriggeredNoButton()
     {
         Choice = true;
+        
+
+    }
+    void TriggeredYesButton()
+    {
+        Choice = true;
+        
 
     }
 
