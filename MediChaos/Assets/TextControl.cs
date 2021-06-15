@@ -9,16 +9,20 @@ using UnityEngine.UI;
 public class TextControl : MonoBehaviour
 {
     //local
-    private string[] TextLines;
-    private int LineIndex = 0;
-    private int LetterIndex =  0;
-    private bool CompletedLine = true;
-    private float LetterSpeed = 0.1f;
-    private string WrittenText;
-    private bool CompletedQuestion = true;
-    private bool IsQuestion = false;
+    [Header("Local Variables")]
+    [SerializeField] private string[] TextLines;
+
+    [SerializeField] private int LetterIndex =  0;
+    [SerializeField] private bool CompletedLine = true;
+    [SerializeField] private float LetterSpeed = 0.1f;
+    [SerializeField] private string WrittenText;
+
+    [SerializeField] private bool CompletedQuestion = true;
+    [SerializeField] private bool IsQuestion = false;
 
     //global
+    [SerializeField] private static int LineIndex = 0;
+
     private static bool Choice;
     public Text SpeechBox;
     
@@ -33,7 +37,8 @@ public class TextControl : MonoBehaviour
         SpeechBox.text = WrittenText;
 
         ClickTrigger();
-        QuestionTriggerCheck();
+        //QuestionTriggerCheck();
+
     }
     void GetTextFile()
     {
@@ -94,6 +99,10 @@ public class TextControl : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// Disabled Chunk Shifted to scenemanager
+    /// </summary>
+    /*
     void QuestionTriggerCheck()
     {
         //The part to verify or not
@@ -127,6 +136,8 @@ public class TextControl : MonoBehaviour
         }
 
     }
+    */
+
     void VerifyMedication()
     {
         CompletedLine = false;
