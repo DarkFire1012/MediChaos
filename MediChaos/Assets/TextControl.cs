@@ -16,29 +16,32 @@ public class TextControl : MonoBehaviour
     [SerializeField] private bool CompletedLine = true;
     [SerializeField] private float LetterSpeed = 0.1f;
     [SerializeField] private string WrittenText;
+    [SerializeField] private string TextToWrite;
 
-    [SerializeField] private bool CompletedQuestion = true;
-    [SerializeField] private bool IsQuestion = false;
+    public GameObject ChoiceButtons;
+    public bool CompletedQuestion = true;
+    public bool IsQuestion = false;
 
-    //global
-    [SerializeField] private static int LineIndex = 0;
+    //global 
+    public int LineIndex = 0;
 
-    private static bool Choice;
+    public bool Choice = true;
     public Text SpeechBox;
     
     void Start()
     {
         GetTextFile();
         //ReadAllText();
-        
+        WrittenText = TextLines[0];
+        //TextToWrite = TextLines[1];
     }
     void LateUpdate()
     {
         SpeechBox.text = WrittenText;
 
         ClickTrigger();
-        //QuestionTriggerCheck();
-
+        QuestionCheck();
+        
     }
     void GetTextFile()
     {
@@ -62,23 +65,36 @@ public class TextControl : MonoBehaviour
     }
     void Typewriter()
     {
+        
+
         LetterIndex++;
-        if (LineIndex < TextLines.Length)
+        if (LineIndex < TextLines.Length)                   //end of file
         {
-            if (LetterIndex > TextLines[LineIndex].Length)
+            if (LetterIndex > TextToWrite.Length)
             {
                 CancelInvoke();
                 LetterIndex = 0;
+
                 if (!IsQuestion)
                 {
                     LineIndex++;
-                    CompletedLine = true;
+                    TextToWrite = TextLines[LineIndex];
                 }
+                else if (IsQuestion)
+                {
                     
+                    ButtonTrigger();
+                }
+
+                TextToWrite = TextLines[LineIndex];
+
+                CompletedLine = true;
+
             }
             else
             {
-                WrittenText = TextLines[LineIndex].Substring(0, LetterIndex);
+                WrittenText = TextToWrite.Substring(0, LetterIndex);
+
             }
         }
         else
@@ -86,86 +102,99 @@ public class TextControl : MonoBehaviour
             //end game
 
         }
-        //}
-        
+
     }
     void ClickTrigger()
     {
-        if (Input.GetMouseButtonDown(0) && CompletedLine)
+        if (Input.GetMouseButtonDown(0) && CompletedQuestion) //not a question
         {
-            CompletedLine = false;
-            InvokeRepeating("Typewriter", 0.001f, LetterSpeed);
+            //QuestionCheck();
+
+
+            if (CompletedLine)// && !IsQuestion)    // if the typing is completed
+            {
+                CompletedLine = false;
+                InvokeRepeating("Typewriter", 0.001f, LetterSpeed);
+
+            }
+
+            else if (!CompletedLine) // && !IsQuestion) //typing not completed.
+            {
+                LetterIndex = TextToWrite.Length;
+                WrittenText = TextToWrite.Substring(0, LetterIndex);
+
+            }
 
         }
-
-    }
-    /// <summary>
-    /// Disabled Chunk Shifted to scenemanager
-    /// </summary>
-    /*
-    void QuestionTriggerCheck()
-    {
-        //The part to verify or not
-        if (CompletedQuestion)
+        
+        
+        if (Input.GetMouseButtonDown(0) && !CompletedQuestion) //is a question
         {
-            //when Text line reaches a certain line, trigger question (verification)
+            if (!CompletedLine) //when question is done
+            {
+                LetterIndex = TextToWrite.Length;
+                WrittenText = TextToWrite.Substring(0, LetterIndex);
+
+            }
+            if (CompletedLine && Choice)
+            {
+                CompletedLine = false;
+                InvokeRepeating("Typewriter", 0.001f, LetterSpeed);
+
+            } if (CompletedLine && IsQuestion && WrittenText != TextToWrite)
+            {
+                CompletedLine = false;
+                InvokeRepeating("Typewriter", 0.001f, LetterSpeed);
+
+            }
+
+        }
+        
+    }
+    void ButtonTrigger()
+    {
+        //InvokeRepeating("Typewriter", 0.001f, LetterSpeed);
+        Choice = false;
+        ChoiceButtons.SetActive(true);
+    }
+    void QuestionCheck()
+    {
+        if (CompletedLine && CompletedQuestion && !Choice)
+        {
             switch (LineIndex)
             {
-                //pretend
-                case (15):
-                    //CompletedQuestion = false;
-                    Debug.Log("trigger1");
-                    VerifyMedication();
-                    //StartCoroutine("VerifyMedication") ;
-                    break;
+                case (3):
 
 
-
-                default: 
-                    ClickTrigger();
+                    TextToWrite = "Question 1";
+                    CompletedQuestion = false;
+                    IsQuestion = true;
+                    LetterIndex = 0;
+                    //ButtonTrigger();
+                    //Choice = false;
                     break;
 
             }
-            //CompletedQuestion = false;
-
-        }
-        else
-        {
-
 
         }
 
     }
-    */
 
     void VerifyMedication()
     {
-        CompletedLine = false;
-        CompletedQuestion = false;
-        IsQuestion = true;
-        //CancelInvoke("Typewriter");
-        //Debug.Log(qn);
-
-        //timer 
         
-        //Wait for user input
-        if (!Choice)
+        //CompletedLine = false;                  //Text line
+        //CompletedQuestion = false;              //Question
+        //IsQuestion = true;                      //Set if
+                                                
+        if (!Choice)                            //Choice not made
         {
-            switch (LineIndex)
-            {
 
-                case (15):
-                    //Insert Qn here
-                    WrittenText = "Test Question";
-                    break;
-
-
-            }
         }
         else
         {
             //soft reset
-            Choice = false;
+            //Choice = false;
 
         }
 
