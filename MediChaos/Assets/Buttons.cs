@@ -8,43 +8,45 @@ public class Buttons : MonoBehaviour
     public Button Yes;
     public Button No;
 
-    private static bool Choice;
+    bool Choice = true;
+    //bool QComp = true;
 
     void Start()
     {
         InitialiseButtons();
 
 
-
-
     }
 
     void InitialiseButtons()
     {
-        Button YesButton = Yes.GetComponent<Button>();
-        YesButton.onClick.AddListener(TriggeredYesButton);
+        Yes.onClick.AddListener(TriggeredYesButton);
 
-        Button NoButton = No.GetComponent<Button>();
-        NoButton.onClick.AddListener(TriggeredNoButton);
-
-
+        No.onClick.AddListener(TriggeredNoButton);
 
 
     }
     void TriggeredNoButton()
     {
-        Choice = true;
-        
+        Triggered();
 
     }
     void TriggeredYesButton()
     {
-        Choice = true;
-        
+        Triggered();
 
     }
 
+    void Triggered()
+    {
 
+        gameObject.GetComponent<TextControl>().Choice = true;
+        //QComp = true;
+        gameObject.GetComponent<TextControl>().ChoiceButtons.SetActive(false);
+        gameObject.GetComponent<TextControl>().CompletedQuestion = true;
+        gameObject.GetComponent<TextControl>().IsQuestion = false;
+
+    }
 
 
 
