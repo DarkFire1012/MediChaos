@@ -18,6 +18,7 @@ public class TextControl : MonoBehaviour
     [SerializeField] private string WrittenText;
     [SerializeField] private string TextToWrite;
 
+    public GameObject NEHRObj;
     public GameObject ChoiceButtons;
     public bool CompletedQuestion = true;
     public bool IsQuestion = false;
@@ -27,6 +28,9 @@ public class TextControl : MonoBehaviour
 
     public bool Choice = true;
     public Text SpeechBox;
+    public Animator Fader;
+    //public Animation Fader;
+
     
     void Start()
     {
@@ -63,13 +67,24 @@ public class TextControl : MonoBehaviour
         }
 
     }
+    void SkipEmptyLines()
+    {
+        //if line empty, proceed next
+        if (TextLines[LineIndex].Length == 0)
+        {
+            LineIndex++;
+            SkipEmptyLines();
+        }
+    }
     void Typewriter()
     {
-        
+
+        SkipEmptyLines();
 
         LetterIndex++;
         if (LineIndex < TextLines.Length)                   //end of file
         {
+
             if (LetterIndex > TextToWrite.Length)
             {
                 CancelInvoke();
@@ -141,13 +156,16 @@ public class TextControl : MonoBehaviour
                 CompletedLine = false;
                 InvokeRepeating("Typewriter", 0.001f, LetterSpeed);
 
-            } if (CompletedLine && IsQuestion && WrittenText != TextToWrite)
+            } 
+            
+            
+            if (CompletedLine && IsQuestion && TextToWrite.Contains("Question"))
             {
                 CompletedLine = false;
                 InvokeRepeating("Typewriter", 0.001f, LetterSpeed);
 
             }
-
+            
         }
         
     }
@@ -157,27 +175,38 @@ public class TextControl : MonoBehaviour
         Choice = false;
         ChoiceButtons.SetActive(true);
     }
+    void CallQuestion()
+    {
+        //Insert fade here
+
+        CompletedQuestion = false;
+        IsQuestion = true;
+        LetterIndex = 0;
+        //ButtonTrigger();
+        //Choice = false;
+    }
     void QuestionCheck()
     {
         if (CompletedLine && CompletedQuestion && !Choice)
         {
             switch (LineIndex)
             {
-                case (3):
-
+                case (5):
 
                     TextToWrite = "Question 1";
-                    CompletedQuestion = false;
-                    IsQuestion = true;
-                    LetterIndex = 0;
-                    //ButtonTrigger();
-                    //Choice = false;
+                    CallQuestion();
+                    CallNEHR();
                     break;
+
 
             }
 
         }
 
+    }
+    void CallNEHR()
+    {
+        NEHRObj.SetActive(true);
     }
 
     void VerifyMedication()
