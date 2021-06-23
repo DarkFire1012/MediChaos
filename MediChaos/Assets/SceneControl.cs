@@ -49,13 +49,10 @@ public class SceneControl : MonoBehaviour
 
         switch (LineIndex)
         {
-            case 3:
+            case 5:
                 Backdrop.texture = Backgrounds.ElementAt(1);
                 break;
 
-            case 11:
-                Backdrop.texture = Backgrounds.ElementAt(2);
-                break;
 
                 
             default:

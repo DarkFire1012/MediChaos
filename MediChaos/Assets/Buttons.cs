@@ -7,6 +7,8 @@ public class Buttons : MonoBehaviour
 {
     public Button Yes;
     public Button No;
+    public List<bool> ChoiceList;
+    public GameObject NEHRObj;
 
     bool Choice = true;
     //bool QComp = true;
@@ -14,9 +16,18 @@ public class Buttons : MonoBehaviour
     void Start()
     {
         InitialiseButtons();
+        SetupArray();
+    }
+    void SetupArray()
+    {
+
+        ChoiceList.Add (true);
+
 
 
     }
+
+
 
     void InitialiseButtons()
     {
@@ -45,6 +56,11 @@ public class Buttons : MonoBehaviour
         gameObject.GetComponent<TextControl>().ChoiceButtons.SetActive(false);
         gameObject.GetComponent<TextControl>().CompletedQuestion = true;
         gameObject.GetComponent<TextControl>().IsQuestion = false;
+
+        NEHRObj.SetActive(false);
+
+
+
 
     }
 
