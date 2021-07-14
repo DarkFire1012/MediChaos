@@ -14,10 +14,10 @@ public class SceneControl : MonoBehaviour
     public Texture Scene1;
     public Texture Scene2;
     public Texture Scene3;
-    //public Image Scene4;
-    //public Image Scene5;
-    //public Image Scene6;
-    //public Image Scene7;
+    public Texture Scene4;
+    //public Texture Scene5;
+    //public Texture Scene6;
+    //public Texture Scene7;
     public RawImage Backdrop;
     public List<Texture> Backgrounds;
     public int LineIndex;
@@ -32,6 +32,7 @@ public class SceneControl : MonoBehaviour
         Backgrounds.Add(Scene1);
         Backgrounds.Add(Scene2);
         Backgrounds.Add(Scene3);
+        Backgrounds.Add(Scene4);
         SwitchScene();
         
     }
@@ -49,16 +50,23 @@ public class SceneControl : MonoBehaviour
 
         switch (LineIndex)
         {
-            case 5:
+            case 0:
+                Backdrop.texture = Backgrounds.ElementAt(0);
+                break;
+
+            case 10:
                 Backdrop.texture = Backgrounds.ElementAt(1);
                 break;
 
-
-                
-            default:
+            case 25:
                 Backdrop.texture = Backgrounds.ElementAt(0);
                 break;
-                
+
+                /*     
+                 default:
+                     Backdrop.texture = Backgrounds.ElementAt(0);
+                     break;
+                     */
         }
 
 

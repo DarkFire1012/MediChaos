@@ -56,7 +56,7 @@ public class Buttons : MonoBehaviour
         gameObject.GetComponent<TextControl>().ChoiceButtons.SetActive(false);
         gameObject.GetComponent<TextControl>().CompletedQuestion = true;
         gameObject.GetComponent<TextControl>().IsQuestion = false;
-
+        gameObject.GetComponent<TextControl>().WrittenText = "";
         NEHRObj.SetActive(false);
 
 
