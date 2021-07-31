@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -465, y: -110}
+  m_AnchoredPosition: {x: -485, y: -110}
   m_SizeDelta: {x: 120, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &117517735
@@ -846,7 +846,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 1.39e-43, w: 0.03125}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1633,6 +1633,7 @@ MonoBehaviour:
   Choice: 0
   SpeechBox: {fileID: 1069398229}
   Fader: {fileID: 0}
+  ScnCtrl: {fileID: 1769647677}
 --- !u!114 &1769647676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1649,6 +1650,19 @@ MonoBehaviour:
   No: {fileID: 2040026963}
   ChoiceList: 
   NEHRObj: {fileID: 995385236}
+  QuestionNumber: 0
+  CorrectAnswer: 0100000000000000
+  ResultArray:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!114 &1769647677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,13 +1675,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5e367aee056444198465f1f27f47a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene1: {fileID: 2800000, guid: 89b8fcca654a0574cba5c7380b07ec6f, type: 3}
-  Scene2: {fileID: 2800000, guid: 918fbf147aa8a3a4c9814d406941f997, type: 3}
+  Scene1: {fileID: 2800000, guid: e1fa57e2dac5eef4b8fb7a3a4f4ff597, type: 3}
+  Scene2: {fileID: 2800000, guid: 21136d6cf322f8844b8dcea6d9a4c854, type: 3}
   Scene3: {fileID: 2800000, guid: 5334499dc53e6fb49a7a83355ba64ca7, type: 3}
   Scene4: {fileID: 0}
   Backdrop: {fileID: 685328672}
   Backgrounds: []
   LineIndex: 0
+  End: 0
 --- !u!114 &1769647678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,14 +1702,23 @@ MonoBehaviour:
   Screen2: {fileID: 2800000, guid: c61179190c02ebd41982a0a441bf2ee2, type: 3}
   Screen3: {fileID: 2800000, guid: 3e210bba2e0c1b945a22bda46437b5d1, type: 3}
   Screen4: {fileID: 2800000, guid: 1a8bd3af2e559ca4290fd44888e8b7f5, type: 3}
-  Screen5: {fileID: 2800000, guid: 724541062d330ea4fbae2244fd4890fe, type: 3}
-  Screen6: {fileID: 2800000, guid: bd6e1302c224cb74998775269fdde3db, type: 3}
-  Screen7: {fileID: 2800000, guid: f60cf5e323a47624493169dfc4b15bab, type: 3}
-  Screen8: {fileID: 2800000, guid: 488cba76e59c6f141899409d8108d70b, type: 3}
+  Screen5: {fileID: 2800000, guid: e9af0bc17c427714b8317ab5adcca146, type: 3}
+  Screen6: {fileID: 2800000, guid: cf400dd78ffad3743bacf56d0de461d5, type: 3}
+  Screen7: {fileID: 2800000, guid: 2d8a37f717ef44444bd51e2147b1a152, type: 3}
+  Screen8: {fileID: 2800000, guid: a41c22341e676cc41a3e4816ada8a419, type: 3}
   Screen9: {fileID: 2800000, guid: 0409c757e66d7fc4eb3c8addb28dfde4, type: 3}
-  Screen10: {fileID: 2800000, guid: 5ac4e6164f6252b4f845fbf9de1a0bfd, type: 3}
-  Screen11: {fileID: 0}
-  Screen12: {fileID: 0}
+  Screen10: {fileID: 2800000, guid: 32d32a2989de32448830c3e0ee4c5b99, type: 3}
+  Screen11: {fileID: 2800000, guid: ef27016929f993f4b80db25e7f458dd7, type: 3}
+  Screen12: {fileID: 2800000, guid: ef887cb7d419de74690b0319397cc170, type: 3}
+  Screen13: {fileID: 0}
+  Screen14: {fileID: 0}
+  Screen15: {fileID: 0}
+  Screen16: {fileID: 0}
+  Screen17: {fileID: 0}
+  Screen18: {fileID: 0}
+  Screen19: {fileID: 0}
+  Screen20: {fileID: 0}
+  Screen21: {fileID: 0}
   Min: 0
   Max: 3
   Page: 0
@@ -1856,7 +1880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -465, y: -210}
+  m_AnchoredPosition: {x: -485, y: -210}
   m_SizeDelta: {x: 120, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1871967202
@@ -2173,8 +2197,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 90}
-  m_SizeDelta: {x: 800, y: 500}
+  m_AnchoredPosition: {x: -80, y: 90}
+  m_SizeDelta: {x: 860, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2081936680
 MonoBehaviour:

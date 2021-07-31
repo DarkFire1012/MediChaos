@@ -23,6 +23,15 @@ public class NEHR : MonoBehaviour
     public Texture Screen10;
     public Texture Screen11;
     public Texture Screen12;
+    public Texture Screen13;
+    public Texture Screen14;
+    public Texture Screen15;
+    public Texture Screen16;
+    public Texture Screen17;
+    public Texture Screen18;
+    public Texture Screen19;
+    public Texture Screen20;
+    public Texture Screen21;
 
     public int Min = 0;
     public int Max = 0;
@@ -59,6 +68,15 @@ public class NEHR : MonoBehaviour
         NEHRScreens.Add(Screen10);
         NEHRScreens.Add(Screen11);
         NEHRScreens.Add(Screen12);
+        NEHRScreens.Add(Screen13);
+        NEHRScreens.Add(Screen14);
+        NEHRScreens.Add(Screen15);
+        NEHRScreens.Add(Screen16);
+        NEHRScreens.Add(Screen17);
+        NEHRScreens.Add(Screen18);
+        NEHRScreens.Add(Screen19);
+        NEHRScreens.Add(Screen20);
+        NEHRScreens.Add(Screen21);
         SwitchScene();
 
     }

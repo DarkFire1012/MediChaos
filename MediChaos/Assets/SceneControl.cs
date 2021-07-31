@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
 public class SceneControl : MonoBehaviour
@@ -22,10 +22,14 @@ public class SceneControl : MonoBehaviour
     public List<Texture> Backgrounds;
     public int LineIndex;
 
+    public bool End = false;
+
+
     void Awake()
     {
 
     }
+
     void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -40,8 +44,26 @@ public class SceneControl : MonoBehaviour
     {
         LineIndex = gameObject.GetComponent<TextControl>().LineIndex;
         SwitchScene();
+
+        if (LineIndex == gameObject.GetComponent<TextControl>().TextLines.Length)
+        {
+            End = true;
+        }
+        if (End)
+        {
+            End = false;
+            gameObject.GetComponent<SceneControl>().enabled = false;
+            //gameObject.SetActive(false);
+            EndGame();
+
+        }
     }
 
+    void EndGame()
+    {
+        SceneManager.LoadScene("End Screen");
+        
+    }
 
     void SwitchScene()
     {
@@ -54,11 +76,11 @@ public class SceneControl : MonoBehaviour
                 Backdrop.texture = Backgrounds.ElementAt(0);
                 break;
 
-            case 10:
+            case 15:
                 Backdrop.texture = Backgrounds.ElementAt(1);
                 break;
 
-            case 25:
+            case 29:
                 Backdrop.texture = Backgrounds.ElementAt(0);
                 break;
 
