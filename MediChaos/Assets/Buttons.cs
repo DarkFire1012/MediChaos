@@ -14,7 +14,7 @@ public class Buttons : MonoBehaviour
     bool Choice = true;
     //bool QComp = true;
     public int QuestionNumber = 0;
-    public int[] CorrectAnswer = {1, 0};                         //0 for false, 1 for true
+    public int[] CorrectAnswer = {1, 0, 0, 0, 1, 1};                         //0 for false, 1 for true
 
     public string[] ResultArray;        //= new string[10];
 

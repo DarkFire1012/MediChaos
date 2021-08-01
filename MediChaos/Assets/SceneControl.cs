@@ -45,7 +45,7 @@ public class SceneControl : MonoBehaviour
         LineIndex = gameObject.GetComponent<TextControl>().LineIndex;
         SwitchScene();
 
-        if (LineIndex == gameObject.GetComponent<TextControl>().TextLines.Length)
+        if (LineIndex == gameObject.GetComponent<TextControl>().TextLines.Length - 1)
         {
             End = true;
         }

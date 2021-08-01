@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -32,6 +32,11 @@ public class Results : MonoBehaviour
         ResultArray = Player.GetComponent<Buttons>().ResultArray;
         SetupTextBox();
         ResultUpdateNew();
+        DisableScript();
+    }
+    void DisableScript()
+    {
+        Player.GetComponent<TextControl>().enabled = false;
     }
     void SetupTextBox()
     {
