@@ -4,44 +4,47 @@ Nurse: Hope you're ready to start work!
 System Notification: Medication order for the patient in Bed 22. 
 System Notification: Antibiotic is needed STAT, other 2 are in 30 minutes.
 
+
 Nurse: I need a STAT dose of Vancomycin for Patient 15.
 
-Doctor: I’d like counseling for Bed 19 regarding Warfarin.
+
+Doctor: I'd like counseling for Bed 19 regarding Warfarin.
+Pharmacist: Alright, Iâ€™m on my way.
+
+*Proceeds to ward
 
 Pharmacist: Hello, how are you feeling? 
-I'm here to run through your medications with you. 
-Can I get a confirmation for your name and IC number please?
-
+Pharmacist: I'm here to run through your medications with you. 
+Pharmacist: Can I get a confirmation for your name and IC number please?
 Patient: My name is Ho Yong Hao 
 Yong Hao: My IC number is S#####94Z
-
-Pharmacist: Alright, so you’ll be starting on this antibiotic as well as these 2 other medications from today onwards. 
+Pharmacist: Alright, so you'll be starting on this antibiotic as well as these 2 other medications from today onwards. 
 Pharmacist: Further information will be given once things are more settled okay? 
 Pharmacist: Do you have any questions for me as of now?
-
-Yong Hao: Okay, noted. 
-Yong Hao: Nope, I don’t have any other questions.
-
-Pharmacist: Alright, that’s good. 
+Yong Hao: Nope, I don't have any other questions.
+Pharmacist: Alright, that's good. 
 Pharmacist: If you need anything you can inform the nurses, alright? 
-Pharmacist: I’ll get going now.
+Pharmacist: I'll get going now.
+
 
 Doctor: Sorry to bother, is there any evidence for the use of metoclopramide in the treatment of migraine?
 
-Pharmacist: Hi Ms Janet, you’re in charge of the patient Ho Yong Hao at Bed 22 right?
+
+
+
+Pharmacist: Hi Ms Janet, you're in charge of the patient Ho Yong Hao at Bed 22 right?
 Medical Officer: Hello, yes. Is there something wrong?
-Pharmacist: It seems that the patient’s insulin regime is different from the prescribed dosage. Are you aware of this?
+Pharmacist: It seems that the patient's insulin regime is different from the prescribed dosage. Are you aware of this?
 Medical Officer: Ah yes, there seems to have been some last minute changes that were not updated in the system. 
 Medical Officer: I will change it, thanks for the reminder.
 
-Nurse: I have an enquiry, I’m not sure about the administration of intravenous Amikacin, 1g. 
+
+Nurse: I have an enquiry, I'm not sure about the administration of intravenous Amikacin, 1g. 
 Nurse: Could you help me out with it?
 
-*Verification of Ciprofloxacin*
 
 Pharmacist: *Calls doctor*
 Pharmacist: Hello Dr. Muthu, I would like to suggest that you change the ciprofloxacin to an alternative beta-lactam 
 such as cephalexin or cefuroxime for the patient in Bed 17. 
 It seems that he is showing allergy reactions to the ciprofloxacin.
-
 

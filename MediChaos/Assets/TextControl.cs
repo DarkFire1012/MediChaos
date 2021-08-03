@@ -10,18 +10,21 @@ public class TextControl : MonoBehaviour
 {
     //local
     [Header("Local Variables")]
-    [SerializeField] private string[] TextLines;
+    public string[] TextLines;
 
-    [SerializeField] private int LetterIndex =  0;
-    [SerializeField] private bool CompletedLine = true;
-    [SerializeField] private float LetterSpeed = 0.1f;
-    [SerializeField] private string WrittenText;
-    [SerializeField] private string TextToWrite;
+    public int LetterIndex =  0;
+    public bool CompletedLine = true;
+    public float LetterSpeed = 0.1f;
+    public string WrittenText;
+    public string TextToWrite;
 
     public GameObject NEHRObj;
     public GameObject ChoiceButtons;
     public bool CompletedQuestion = true;
     public bool IsQuestion = false;
+    public float timer = 0;
+
+    //blic Component options = GetComponent<Buttons>();
 
     //global 
     public int LineIndex = 0;
@@ -30,6 +33,8 @@ public class TextControl : MonoBehaviour
     public Text SpeechBox;
     public Animator Fader;
     //public Animation Fader;
+
+    public SceneControl ScnCtrl;
 
     
     void Start()
@@ -75,13 +80,20 @@ public class TextControl : MonoBehaviour
             LineIndex++;
             SkipEmptyLines();
         }
+        
     }
     void Typewriter()
     {
 
-        SkipEmptyLines();
+        //SkipEmptyLines();
 
         LetterIndex++;
+        if (LineIndex == TextLines.Length)
+        {
+            //ScnCtrl.Invoke("EndGame", 1);
+            ScnCtrl.End = true;
+        }
+
         if (LineIndex < TextLines.Length)                   //end of file
         {
 
@@ -94,6 +106,7 @@ public class TextControl : MonoBehaviour
                 {
                     LineIndex++;
                     TextToWrite = TextLines[LineIndex];
+                    Choice = false;
                 }
                 else if (IsQuestion)
                 {
@@ -115,7 +128,7 @@ public class TextControl : MonoBehaviour
         else
         {
             //end game
-
+            //ScnCtrl.Invoke("EndGame", 1);
         }
 
     }
@@ -182,6 +195,7 @@ public class TextControl : MonoBehaviour
         CompletedQuestion = false;
         IsQuestion = true;
         LetterIndex = 0;
+        InvokeRepeating("Typewriter", 0.001f, LetterSpeed);
         //ButtonTrigger();
         //Choice = false;
     }
@@ -191,12 +205,87 @@ public class TextControl : MonoBehaviour
         {
             switch (LineIndex)
             {
-                case (5):
-
-                    TextToWrite = "Question 1";
+                case (6):   //Medication Order
+                    TextToWrite = "Is this list safe to verify?";
                     CallQuestion();
+                    gameObject.GetComponent<Buttons>().Yes.GetComponentInChildren<Text>().text = "Yes";
+                    gameObject.GetComponent<Buttons>().No.GetComponentInChildren<Text>().text = "No";
+                    gameObject.GetComponent<NEHR>().Min = 0;
+                    gameObject.GetComponent<NEHR>().Max = 3;
+                    //gameObject.GetComponent<NEHR>().PageRange = new RangeAttribute (0,3);
+                    CallNEHR();
+
+                    timer = 0;
+                    Invoke ("Timer", 1);
+                    break;
+
+                    case (9):   //Vancomycin
+                    TextToWrite = "Can this order be verified?";
+                    CallQuestion();
+                    gameObject.GetComponent<Buttons>().Yes.GetComponentInChildren<Text>().text = "Yes";
+                    gameObject.GetComponent<Buttons>().No.GetComponentInChildren<Text>().text = "No";
+                    gameObject.GetComponent<NEHR>().Min = 4;
+                    gameObject.GetComponent<NEHR>().Max = 9;
+                    //gameObject.GetComponent<NEHR>().PageRange = new RangeAttribute(4, 10);
                     CallNEHR();
                     break;
+
+                    case (29):   //Amount Verification
+                    TextToWrite = "Is the medication enough for use?";
+                    CallQuestion();
+                    gameObject.GetComponent<Buttons>().Yes.GetComponentInChildren<Text>().text = "Yes";
+                    gameObject.GetComponent<Buttons>().No.GetComponentInChildren<Text>().text = "No";
+                    gameObject.GetComponent<NEHR>().Min = 10;
+                    gameObject.GetComponent<NEHR>().Max = 11;
+                    //gameObject.GetComponent<NEHR>().PageRange = new RangeAttribute(4, 10);
+                    CallNEHR();
+                    break;
+
+                    case (32):   //Treatment of migrane
+                    TextToWrite = "Is there any evidence for the use of metoclopramide in the treatment of migraine?";
+                    CallQuestion();
+                    gameObject.GetComponent<Buttons>().Yes.GetComponentInChildren<Text>().text = "Yes";
+                    gameObject.GetComponent<Buttons>().No.GetComponentInChildren<Text>().text = "No";
+                    //gameObject.GetComponent<NEHR>().Min = 11;
+                    //gameObject.GetComponent<NEHR>().Max = 14;
+                    //gameObject.GetComponent<NEHR>().PageRange = new RangeAttribute(4, 10);
+                    //CallNEHR();
+                    break;
+
+                    case (34):   //Intervention
+                    TextToWrite = "Is there need for intervention?";
+                    CallQuestion();
+                    gameObject.GetComponent<Buttons>().Yes.GetComponentInChildren<Text>().text = "Yes";
+                    gameObject.GetComponent<Buttons>().No.GetComponentInChildren<Text>().text = "No";
+                    //gameObject.GetComponent<NEHR>().Min = 4;
+                    //gameObject.GetComponent<NEHR>().Max = 9;
+                    //gameObject.GetComponent<NEHR>().PageRange = new RangeAttribute(4, 10);
+                    //CallNEHR();
+                    break;
+
+                    case (44):   //Amakacin Dosage
+                    TextToWrite = "What's the recommended dosage? (x mg/kg/day)";
+                    CallQuestion();
+                    gameObject.GetComponent<Buttons>().Yes.GetComponentInChildren<Text>().text = "15";
+                    gameObject.GetComponent<Buttons>().No.GetComponentInChildren<Text>().text = "10";
+                    //gameObject.GetComponent<NEHR>().Min = 4;
+                    //gameObject.GetComponent<NEHR>().Max = 9;
+                    //gameObject.GetComponent<NEHR>().PageRange = new RangeAttribute(4, 10);
+                    //CallNEHR();
+                    break;
+
+                    /*
+                    case (48):   //I DONT FUCKING KNOW
+                    TextToWrite = "Can this order be verified?";
+                    CallQuestion();
+                    gameObject.GetComponent<Buttons>().Yes.GetComponentInChildren<Text>().text = "Safe";
+                    gameObject.GetComponent<Buttons>().No.GetComponentInChildren<Text>().text = "Not Safe";
+                    gameObject.GetComponent<NEHR>().Min = 4;
+                    gameObject.GetComponent<NEHR>().Max = 9;
+                    //gameObject.GetComponent<NEHR>().PageRange = new RangeAttribute(4, 10);
+                    CallNEHR();
+                    break;
+                    */
 
 
             }
@@ -204,9 +293,28 @@ public class TextControl : MonoBehaviour
         }
 
     }
+    void Timer()
+    {
+        timer += 1;
+        if (timer >= 15)
+        {
+            CancelInvoke("Timer");
+            gameObject.GetComponent<OptionJumps>().Invoke("Scene2", 0);
+        }
+        else
+        {
+            Invoke("Timer", 1);
+        }
+    }
     void CallNEHR()
     {
         NEHRObj.SetActive(true);
+    }
+
+    void BypassNEHR()
+    {
+
+
     }
 
     void VerifyMedication()
